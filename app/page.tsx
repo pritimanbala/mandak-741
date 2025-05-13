@@ -38,7 +38,7 @@ const members = [
     role: "Video Editor by passion",
     link : "https://www.linkedin.com/in/raagul-khanna-k-bb98b5205/",
     image: "/raagul_casual.png",
-    about: "Raagul (ethinically Tamil) is a passionate video editor who sees every frame as a chance to tell a deeper story. With a keen eye for detail and rhythm, he brings emotion and energy into every project. Whether it's a short reel or a long-form documentary, Raagul thrives on shaping raw footage into powerful visual experiences."
+    about: "Raagul (ethnically  Tamil) is a passionate video editor who sees every frame as a chance to tell a deeper story. With a keen eye for detail and rhythm, he brings emotion and energy into every project. Whether it's a short reel or a long-form documentary, Raagul thrives on shaping raw footage into powerful visual experiences."
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const members = [
     role: "Lazy to handle 8AM classes",
     image: "/om_casual.jpg",
     link: "https://www.linkedin.com/in/omdhomne",
-    about: "Om (ethinically Marathi) might call himself lazy, but behind that chill demeanor is a quietly brilliant thinker who prefers to work smarter, not harder. Known for his quirky takes and unconventional approach, he has a knack for untangling complex problems when no one else can, even if he takes his sweet time doing it."
+    about: "Om (ethnically  Marathi) might call himself lazy, but behind that chill demeanor is a quietly brilliant thinker who prefers to work smarter, not harder. Known for his quirky takes and unconventional approach, he has a knack for untangling complex problems when no one else can, even if he takes his sweet time doing it."
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const members = [
     link : "https://www.linkedin.com/in/pritiman-bala-2352a5334/",
     role: "Developer by Code, Singer by Heart",
     image: "/pritiman_casual.jpg",
-    about: "Pritiman (ethinically Bengali) owns his chaos and turns it into code. He’s the kind of developer who might not follow the textbook, but he gets results with flair and speed. His sharp instincts, bold experimentation, and love for breaking and fixing things make him the team’s secret weapon in any technical challenge."
+    about: "Pritiman (ethnically  Bengali) owns his chaos and turns it into code. He’s the kind of developer who might not follow the textbook, but he gets results with flair and speed. His sharp instincts, bold experimentation, and love for breaking and fixing things make him the team’s secret weapon in any technical challenge."
   }
 ]
 

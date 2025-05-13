@@ -7,9 +7,13 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "The Room",
-  description: "Our exclusive space where creativity meets comfort",
-  generator: 'pritimanbala'
+  title: "Room 741",
+  description: "Our exclusive space where people form various parts of India come together to share their thoughts and ideas.",
+  generator: 'pritimanbala',
+  icons: {
+    icon: "/favicon.png",
+  },
+  
 }
 
 export default function RootLayout({
