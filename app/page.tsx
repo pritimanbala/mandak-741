@@ -94,12 +94,11 @@ const members = [
             The most diverse and business minded room in whole Mandakini Hostel.
           </p>
           <div className="flex justify-center md:justify-start space-x-4 pt-4">
-            <Button
-              variant="outline"
-              className="border-2 border-red-600 text-white bg-red-600 hover:bg-red-900/30 hover:text-white rounded-md px-8 py-2"
-            >
-              Explore
-            </Button>
+            <a href="https://drive.google.com/drive/folders/1fwFIul6xlkAW_RXyhDKMIACgfD711o1R?usp=share_link" target="_blank" rel="noopener noreferrer">
+              <motion.button className="bg-transparent hover:bg-red-800 text-white border-2 border-red-600 rounded-md px-8 py-2 mt-4 flex justify-center items-center mx-auto" animate={{ scale: 1.1 }} whileHover={{ scale: 1.2 }} whileTap={{ scale: 1 }}>
+                Explore
+              </motion.button>
+                </a>
           </div>
         </div>
 
