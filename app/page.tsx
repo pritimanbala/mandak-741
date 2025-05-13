@@ -34,7 +34,7 @@ export default function Home() {
 const members = [
   {
     id: 1,
-    name: "Raagul Khanna K",
+    name: "Raagul Khanna",
     role: "Video Editor by passion",
     link : "https://www.linkedin.com/in/raagul-khanna-k-bb98b5205/",
     image: "/raagul_casual.png",
