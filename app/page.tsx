@@ -93,10 +93,10 @@ const members = [
         <div className="space-y-6 w-full md:w-1/2 text-center md:text-left">
           <motion.h1 className="text-5xl md:text-7xl font-bold text-white" initial={{ opacity : 0}} animate={{ opacity: 1}} transition={{ delay : 0.5, duration: 1}}>Room 741</motion.h1>
           <motion.h2 className="text-3xl md:text-4xl font-medium text-red-600" initial={{ x : "-100vw"}} animate={{ x: 0}} transition={{ delay : 0.5, duration: 1}}>Mandakini, IIT Madras</motion.h2>
-          <motion.p className="text-gray-300 max-w-lg mx-auto md:mx-0" initial={{ x : "-100vw", opacity: 0}} animate={{ x: 0 , opacity: 1}} transition={{ delay: 1.3, duration: 1}}>
+          <motion.p className="text-gray-300 max-w-lg mx-auto md:mx-0" initial={{ x : "-100vw", opacity: 0}} animate={{ x: 0 , opacity: 1}} transition={{ delay: 1.3, duration: 1.4}}>
             The most diverse and business minded room in whole Mandakini Hostel.
           </motion.p>
-          <motion.div className="flex justify-center md:justify-start space-x-4 pt-4" initial={{opacity: 0}} animate={{opacity: 1}} transition={{ delay: 2.7, duration: 1 }}>
+          <motion.div className="flex justify-center md:justify-start space-x-4 pt-4" initial={{opacity: 0}} animate={{opacity: 1}} transition={{ delay: 3, duration: 1 }}>
             <motion.a href="https://drive.google.com/drive/folders/1fwFIul6xlkAW_RXyhDKMIACgfD711o1R?usp=share_link" target="_blank" rel="noopener noreferrer">
               <motion.button className="bg-transparent hover:bg-red-800 text-white border-2 border-red-600 rounded-md px-8 py-2 mt-4 flex justify-center items-center mx-auto" animate={{ scale: 1.1 }} whileHover={{ scale: 1.2 }} whileTap={{ scale: 1 }}>
                 Explore
