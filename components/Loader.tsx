@@ -70,7 +70,7 @@ const Loader = () => {
     ))}
   </div>
 
-  <div className="loading-text">Loading...</div>
+  <div className="loading-text">Seven fukin' forty one</div>
 
   {/* Split panels for final animation */}
   <div className="split-panel left-panel"></div>
