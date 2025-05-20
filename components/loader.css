@@ -33,7 +33,11 @@
   color: white;
   z-index: 3;
   pointer-events: none;
-  font-family: "Rocinante Titling", Arial, Helvetica, sans-serif;
+  font-family: "Rocinante Titling",  Helvetica, sans-serif;
+    white-space: nowrap;       /* Don't allow wrapping */
+  overflow: hidden;          /* Hide overflow */
+  font-size: clamp(12px, 5vw, 32px);  /* Responsive font size */
+
 }
 
 /* Split Panels */
