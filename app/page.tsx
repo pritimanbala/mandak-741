@@ -1,39 +1,40 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState} from "react"
 import Image from "next/image"
 import { CloudIcon, PlayCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { LiaLinkedinIn } from "react-icons/lia";
 import {motion, useInView} from "framer-motion"
+import Loader from "@/components/Loader"
 
 export default function Home() {
+  
   // Handle smooth scrolling when clicking on navigation links
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const inViewA = useInView(ref, { once: true, margin: "-200px" });
-  useEffect(() => {
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target.tagName === "A" && target.getAttribute("href")?.startsWith("#")) {
-        e.preventDefault()
-        const id = target.getAttribute("href")?.substring(1)
-        const element = document.getElementById(id || "")
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80, // Offset for the fixed header
-            behavior: "smooth",
-          })
-        }
+const ref = useRef<HTMLDivElement>(null)
+
+useEffect(() => {
+  const handleAnchorClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.tagName === "A" && target.getAttribute("href")?.startsWith("#")) {
+      e.preventDefault()
+      const id = target.getAttribute("href")?.substring(1)
+      const element = document.getElementById(id || "")
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80, // Offset for the fixed header
+          behavior: "smooth",
+        })
       }
     }
+  }
+  
+  document.addEventListener("click", handleAnchorClick)
+  return () => document.removeEventListener("click", handleAnchorClick)
+}, [])
 
-    document.addEventListener("click", handleAnchorClick)
-    return () => document.removeEventListener("click", handleAnchorClick)
-  }, [])
-
-  // Member data
+// Member data
 const members = [
   {
     id: 1,
@@ -61,12 +62,35 @@ const members = [
   }
 ]
 
-  // Stream data
+const [loading, setLoading] = useState(true)
+const inView = useInView(ref, loading ? { amount: 0 } : { once: true, margin: "-100px" })
+
+  // Trigger loader for a brief time or until content is loaded
+  useEffect(() => {
+    // Simulate loading delay or wait for DOM content
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 4300)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black">
+        <Loader />
+      </div>
+    )
+  }
+  // Animation variants
 
   return (
-    <main className="min-h-screen overflow-hidden bg-gradient-to-b from-black to-red-900 scroll-smooth">
+    <main className="min-h-screen bg-gradient-to-b from-black to-red-900 scroll-smooth overflow-auto hide-scrollbar">
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-8 py-4 bg-black/90 backdrop-blur-sm">
+      <motion.nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 py-4 bg-black/90 backdrop-blur-sm"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
         <div className="flex items-center">
           <CloudIcon className="w-10 h-10 text-red-600" />
         </div>
@@ -82,7 +106,7 @@ const members = [
           </a>
         </div>
         <div className="md:hidden"></div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
       <section
@@ -91,9 +115,9 @@ const members = [
       >
         {/* Text Section */}
         <div className="space-y-6 w-full md:w-1/2 text-center md:text-left">
-          <motion.h1 className="text-5xl md:text-7xl font-bold text-white" initial={{ opacity : 0}} animate={{ opacity: 1}} transition={{ delay : 0.5, duration: 1}}>Room 741</motion.h1>
-          <motion.h2 className="text-3xl md:text-4xl font-medium text-red-600" initial={{ x : "-100vw"}} animate={{ x: 0}} transition={{ delay : 0.5, duration: 1}}>Mandakini, IIT Madras</motion.h2>
-          <motion.p className="text-gray-300 max-w-lg mx-auto md:mx-0" initial={{ x : "-100vw", opacity: 0}} animate={{ x: 0 , opacity: 1}} transition={{ delay: 1.3, duration: 1.4}}>
+          <motion.h1 className="text-5xl md:text-7xl font-bold font-neutral text-white" style={{fontFamily: "neutral face"}} initial={{ opacity : 0}} animate={{ opacity: 1}} transition={{ delay : 0.5, duration: 1}}>Room 741</motion.h1>
+          <motion.h2 className="text-3xl md:text-4xl font-medium font-neutral text-red-600" style={{fontFamily: "neutral face"}} initial={{ x : "-100vw"}} animate={{ x: 0}} transition={{ delay : 0.5, duration: 1}}>Mandakini, IIT Madras</motion.h2>
+          <motion.p className="text-gray-300 max-w-lg mx-auto md:mx-0 font-neutral" initial={{ x : "-100vw", opacity: 0}} animate={{ x: 0 , opacity: 1}} transition={{ delay: 1.3, duration: 1.4}}>
             The most diverse and business minded room in whole Mandakini Hostel.
           </motion.p>
           <motion.div className="flex justify-center md:justify-start space-x-4 pt-4" initial={{opacity: 0}} animate={{opacity: 1}} transition={{ delay: 3, duration: 1 }}>
@@ -140,13 +164,13 @@ const members = [
       initial={{ opacity: 0, y: 100 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}>
-  <h1 className="text-4xl md:text-6xl font-bold text-white">
-    About <span className="text-red-600">Us</span>
+  <h1 className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily: "neutral face"}}>
+    About <span className="text-red-600" style={{fontFamily: "neutral face"}}>Us</span>
   </h1>
-  <h2 className="text-3xl md:text-4xl font-medium text-white mt-6">
-    THE ROOM <span className="text-red-600">741</span>
+  <h2 className="text-3xl md:text-4xl font-medium text-white mt-6" style={{fontFamily: "neutral face"}}>
+    THE ROOM <span className="text-red-600" style={{fontFamily: "neutral face"}}>741</span>
   </h2>
-  <h3 className="text-xl text-red-500">The Dump room of Ideas</h3>
+  <h3 className="text-xl text-red-500" >The Dump room of Ideas</h3>
   <p className="text-gray-300 max-w-lg mx-auto md:mx-0">
     Founded with a vision to create a unique space for like-minded individuals, our room has evolved into a
     thriving community...
@@ -169,28 +193,24 @@ const members = [
   </h1>
 
   <motion.div
-    className="flex flex-col space-y-16"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-    variants={{
-      visible: {
-        transition: {
-          staggerChildren: 0.4
-        }
-      }
-    }}
-  >
-    {members.map((member) => (
-      <motion.div
-        key={member.id}
-        variants={{
-          hidden: { opacity: 0, y: 100 },
-          visible: { opacity: 1, y: 0 }
-        }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="flex flex-col md:flex-row items-center justify-around space-x-0 md:space-x-6"
-      >
+  className="flex flex-col space-y-16"
+  variants={{ visible: { transition: { staggerChildren: 0.4 } } }}
+  initial="hidden"
+  animate="visible"
+>
+  {members.map((member) => (
+    <motion.div
+      key={member.id}
+      variants={{
+        hidden: { opacity: 0, y: 100 },
+        visible: { opacity: 1, y: 0 }
+      }}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      initial="hidden"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="flex flex-col md:flex-row items-center justify-around space-x-0 md:space-x-6"
+    >
         <Card className="bg-black/40 border-red-800 overflow-hidden w-full sm:w-[80%] md:w-[60%] lg:w-[40%] min-h-fit">
           <CardContent className="p-0">
             <div className="relative w-full h-64 sm:h-80 md:h-96">
@@ -249,6 +269,7 @@ const members = [
           </div>
         </div>
       </footer>
+      
     </main>
   )
 }
